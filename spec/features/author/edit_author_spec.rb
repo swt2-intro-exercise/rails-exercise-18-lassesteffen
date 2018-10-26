@@ -6,4 +6,8 @@ describe 'author/edit', type: :feature do
 
   it 'should render without error' do
   end
+
+  it 'should have all author fields with the correct values' do
+    PLEASE FILL IN
+  end
 end
