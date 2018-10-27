@@ -32,6 +32,11 @@ describe 'author/index', type: :feature  do
     expect(page).to have_link('Edit', href: edit_author_path(@author2))
   end
 
+  it 'should have a link to the delete the author' do
+    expect(page).to have_css("a[data-method='delete'][href='/authors/#{@author.id}']")
+    expect(page).to have_css("a[data-method='delete'][href='/authors/#{@author2.id}']")
+  end
+
   it 'should have a link to create a new author' do
     expect(page).to have_link('Create new author', href: new_author_path)
   end
