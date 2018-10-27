@@ -22,9 +22,14 @@ describe 'author/index', type: :feature  do
     expect(page).to have_link(@author2.name, href: author_path(@author2))
   end
 
-  it 'shold have a link to their homepage' do
+  it 'should have a link to their homepage' do
     expect(page).to have_link(@author.homepage, href: "https://#{@author.homepage}")
     expect(page).to have_link(@author2.homepage, href: "https://#{@author2.homepage}")
+  end
+
+  it 'should have a link to the edit author page' do
+    expect(page).to have_link('Edit', href: edit_author_path(@author))
+    expect(page).to have_link('Edit', href: edit_author_path(@author2))
   end
 
   it 'should have a link to create a new author' do
