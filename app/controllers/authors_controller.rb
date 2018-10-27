@@ -24,6 +24,10 @@ class AuthorsController < ApplicationController
     end
   end
 
+  def update
+
+  end
+
   private
 
   def author_params
