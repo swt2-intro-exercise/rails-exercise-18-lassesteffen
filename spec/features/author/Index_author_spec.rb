@@ -37,6 +37,12 @@ describe 'author/index', type: :feature  do
     expect(page).to have_css("a[data-method='delete'][href='/authors/#{@author2.id}']")
   end
 
+  it 'should delete the author when clicking the delete link' do
+    find("a[data-method='delete'][href='/authors/#{@author.id}']").click
+
+    expect { @author.reload }.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
   it 'should have a link to create a new author' do
     expect(page).to have_link('Create new author', href: new_author_path)
   end
