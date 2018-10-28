@@ -18,4 +18,19 @@ describe 'New paper page', type: :feature do
     find('input[type="submit"]').click
     expect(page).to have_text('error')
   end
+
+  it 'should not create a new paper without a year' do
+    page.fill_in 'paper[title]', with: 'Paper XY'
+    page.fill_in 'paper[venue]', with: 'Berlin'
+    find('input[type="submit"]').click
+    expect(page).to have_text('error')
+  end
+
+  it 'should only create new papers with numeric years' do
+    page.fill_in 'paper[title]', with: 'Paper XY'
+    page.fill_in 'paper[venue]', with: 'Berlin'
+    page.fill_in 'paper[year]', with: '19ab'
+    find('input[type="submit"]').click
+    expect(page).to have_text('error')
+  end
 end
