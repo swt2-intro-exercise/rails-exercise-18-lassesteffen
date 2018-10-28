@@ -17,9 +17,12 @@ describe 'author/index', type: :feature  do
 
   it 'should show all created authors' do
     expect(page).to have_text(@author.name)
-    expect(page).to have_link(@author.name, href: author_path(@author))
     expect(page).to have_text(@author2.name)
-    expect(page).to have_link(@author2.name, href: author_path(@author2))
+  end
+
+  it 'should have a link to show the authors details' do
+    expect(page).to have_link('Show', href: author_path(@author))
+    expect(page).to have_link('Show', href: author_path(@author2))
   end
 
   it 'should have a link to their homepage' do
